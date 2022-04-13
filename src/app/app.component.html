@@ -1,0 +1,101 @@
+<body>
+  <div class="container">
+    <div class="heading">{{title}}</div>
+    <form [formGroup]="registerform" (ngSubmit)="create()">
+      <div class="card-details">
+        <div class="form-group">
+          <label for="type">ACCOUNT TYPE</label><br>
+          <select  class="form-control" formControlName="type" id="type">
+            <option *ngFor="let accounttype of accountTypes" [value]="accounttype.id">
+                     {{accounttype.name}}
+            </option>
+             
+          </select>
+          <small style="color: red;" *ngIf="type.invalid && type.touched">*Account Type is Required </small>
+        </div>
+        <div class="form-group">
+          <label for="fname">FIRST NAME</label>
+          <input type="text" class="form-control" id="fname" formControlName="fname" placeholder="ENTER THE FIRST NAME">
+          <small style="color: red;" *ngIf="fname.invalid && fname.touched">*FirstName is Required </small>
+        </div>
+        <div class="form-group">
+          <label for="lname">LASTNAME</label>
+          <input type="text" class="form-control" id="lname" formControlName="lname" placeholder="ENTER THE LAST NAME">
+          <small style="color: red;" *ngIf="lname.invalid && lname.touched">*LastName is Required </small>
+        </div>
+        <div class="form-group">
+          <label for="gname">GENDER</label><br>
+          <select class="form-control" formControlName="gname" id="gname">
+            <option selected>SELECT GENDER</option>
+            <option>MALE</option>
+            <option>FEMALE</option>
+            <option>OTHERS</option>
+          </select>
+          <small style="color: red;" *ngIf="gname.invalid && gname.touched">*Gender is Required </small>
+        </div>
+        <div class="form-group">
+          <label for="age">AGE</label>
+          <input type="text" class="form-control" id="age" formControlName="age" placeholder="ENTER THE AGE">
+          <small style="color: red;" *ngIf="age.invalid && age.touched">*Age is Required </small>
+          <small style="color: red;" *ngIf="!(age.value>=18) && !age.invalid">*Age i</small>
+        </div>
+        <div class="form-group">
+          <label for="dob">DATE OF BIRTH</label>
+          <input type="date" class="form-control" id="dob" formControlName="dob">
+          <small style="color: red;" *ngIf="dob.invalid && dob.touched">*DOB is Required </small>
+        </div>
+        <div class="form-group">
+          <label for="cnum">CONTACT NUMBER</label>
+          <input type="text" class="form-control" id="cnum" formControlName="cnum"
+            placeholder="ENTER THE MOBILE NUMBER">
+          <small style="color: red;" *ngIf="cnum.invalid && cnum.touched">*Mobile Number Is Required</small>
+        </div>
+        <div class="form-group">
+          <label for="anum">AADHAAR NUMBER</label>
+          <input type="text" class="form-control" id="anum" formControlName="anum"
+            placeholder="ENTER THE AADHAAR NUMBER">
+          <small style="color:red;" *ngIf="anum.invalid && anum.touched">*AADHAAR Number is Required</small>
+        </div>
+        <div class="form-group">
+          <label for="eid">EMAIL ID</label>
+          <input type="text" class="form-control" id="eid" formControlName="eid" placeholder="ENTER THE EMAIL ID">
+          <small style="color:red;" *ngIf="eid.invalid && eid.touched">*Email Id is Required</small>
+        </div>
+        <div class="form-group">
+          <label for="npsw">NEW PASSWORD</label>
+          <input type="password" class="form-control" id="npsw" formControlName="npsw" placeholder="ENTER THE PASSWORD">
+          <small style="color:red;" *ngIf="npsw.invalid && npsw.touched">*Password is Required</small>
+        </div>
+        <div class="form-group">
+          <label for="cpsw">CONFIRM PASSWORD</label>
+          <input type="password" class="form-control" id="cpsw" formControlName="cpsw" placeholder="RE-ENTER THE PASSWORD">
+          <small style="color:red;" *ngIf="cpsw.invalid && cpsw.touched">*Password is Required</small>
+          <small style="color: red;" *ngIf="(cpsw.value !== npsw.value) && !cpsw.invalid">*jduueyh</small>
+        </div>
+        <div class="form-group">
+          <label for="adres">ADDRESS</label>
+          <input type="text" class="form-control" id="adres" formControlName="adres"
+            placeholder="ENTER THE DOOR NUMBER">
+          <small style="color: red;" *ngIf="adres.invalid && adres.touched">*Address is Required</small>
+        </div>
+        <div class="form-group">
+          <label for="place">CITY</label>
+          <input type="text" class="form-control" id="place" formControlName="place" placeholder="ENTER THE CITY">
+          <small style="color:red;" *ngIf="place.invalid && place.touched">*City Name Is Required</small>
+        </div>
+        <div class="form-group">
+          <label for="code">PIN CODE</label>
+          <input type="text" class="form-control" id="code" formControlName="code" placeholder="ENTER THE POSTAL CODE">
+          <small style="color: red;" *ngIf="code.invalid && code.touched">*PIN Code Is Required</small>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="REGISTER">
+      </div>
+    </form>
+  </div>
+  <div class="alert alert-primary" role="alert">
+    {{successMessage}}
+  </div>
+</body>
+<router-outlet></router-outlet>
